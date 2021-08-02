@@ -32,32 +32,32 @@ node  *startingPoint(node *start){
     node *slow,*fast;
     slow=start;
     fast=start;
-    while(fast and fast->next){
+    while(slow and fast and fast->next){
         slow=slow->next;
         fast=fast->next->next;
         if(slow==fast){
             break;
         }
-   
     }
-   slow=start;
-   while(slow->next!=fast->next){
-       slow=slow->next;
-       fast=fast->next;
-   }
-   fast=fast->next;
-   if(fast) return fast;
+      if(slow==fast){
+        slow=start;
+        while(slow->next!=fast->next){
+            slow=slow->next;
+            fast=fast->next;
+        }
+        
+        return fast->next;
+    }
     else{
-        cout<<"Loop does not present";
+        cout<<"Loop not found";
         return NULL;
     }
-
 }
 void isLoop(node *start){
     node *slow,*fast;
     slow=start;
     fast=start;
-    while(fast and fast->next){
+    while(slow and fast and fast->next){
         slow=slow->next;
         fast=fast->next->next;
         if(slow==fast){
@@ -88,7 +88,8 @@ int main() {
     temp=temp->next->next;
     temp->next->next->next=temp;
     node *ans=startingPoint(start);
-    cout<<ans->data;
+    if(ans) cout<<ans->data;
+    else return 0;
     //isLoop(start);
 	return 0;
 }

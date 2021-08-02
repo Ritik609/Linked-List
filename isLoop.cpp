@@ -32,7 +32,7 @@ void isLoop(node *start){
     node *slow,*fast;
     slow=start;
     fast=start;
-    while(fast and fast->next){
+    while(slow and fast and fast->next){
         slow=slow->next;
         fast=fast->next->next;
         if(slow==fast){

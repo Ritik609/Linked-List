@@ -34,6 +34,28 @@ void split(Node *head,Node* &head1,Node* &head2) {
     curr2->next=*head1_ref;
     curr->next=*head2_ref;
 }
+/*void splitList(node *head, node **head1, node **head2){
+	if(head == NULL)
+		return;
+	*head1 = head;
+	if(head->next == NULL){
+		return;
+	}
+
+	node *slow = head->next;
+	node *fast = head->next->next;
+	while(fast->next != head && fast->next->next != head){
+		slow = slow->next;
+		fast = fast->next->next;
+	}
+	*head2 = slow->next;
+	slow->next = head;
+	while(fast->next != head){
+		fast = fast->next;
+	}
+	fast->next = *head2;
+}
+*/
 void push(Node **head_ref, int data)
 {
 	Node *ptr1 = new Node();
